@@ -3,49 +3,31 @@ import {Text,View,StyleSheet, Alert} from 'react-native';
 import {Card, Button} from 'react-native-paper';
 import  MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-const Details = (props,{navigation,route}) =>{
-     const {_id,name,email,phone,job} =props.route.params.item
-
-     const deleteUser = () =>{
-         fetch('http://172.20.10.4:5000/details/' +_id,{
-             method:'delete',
-             headers:{
-             'Content-Type': 'application/json'
-             },
-             body:JSON.stringify({
-
-             })
-         })
-         .then(res=>res.json())
-         .then(deleteUser =>{
-             Alert.alert('User deleted')
-             props.navigation.navigate("Home")
-         })
-         .catch(err=>{
-             Alert.alert('Something went wrong')
-         })
-     }
+const Details = ({navigation}) =>{
+    
+        
       return (
           <View>
               <Card style={styles.card}>
-                  <Text>{name}</Text>
+                  <Text>James</Text>
               </Card>
               <Card style={styles.card}>
-                  <Text>{email}</Text>
+                  <Text>james@gmail.com</Text>
               </Card>
               <Card style={styles.card}>
-                  <Text>{phone}</Text>
+                  <Text>90909090909</Text>
               </Card>
               <Card style={styles.card}>
-                  <Text>{job}</Text>
+                  <Text>Software engineer</Text>
               </Card>
-              <Button mode="contained" style={styles.button} onPress={()=>{props.navigation.navigate("Update", {_id,name,email,phone,job}) }}>
-                  <Text>Edit</Text>
-                  <MaterialCommunityIcons size={15} name="delete-outline"/>
-              </Button>
-              <Button mode="contained" style={styles.button1} onPress={()=> deleteUser()}>
-                  <Text>Delete </Text>
+              <Button mode="contained" style={styles.button} onPress={()=>{navigation.navigate("Update") }}>
+                  <Text>Edit </Text>
                   <FontAwesome5 size={15} name="edit"/>
+              </Button>
+              <Button mode="contained" style={styles.button1} onPress={()=>{navigation.navigate('Home')}}>
+                  <Text>Delete </Text>
+                  <MaterialCommunityIcons size={15} name="delete-outline"/>
+                  
               </Button>
           </View>
       )

@@ -3,50 +3,11 @@ import {Text,View,StyleSheet,Image, Alert} from 'react-native';
 import {TextInput,Button} from 'react-native-paper';
 import MaterialCommunityIcons from'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import AsyncStorage from '@react-native-community/async-storage'
+
 
 const Login = ({navigation}) => {
-  const [email,setEmail] = useState("")
-  const [password,setPassword] = useState("")
- const Login = ()=>{
-  fetch("http://172.20.10.4:5000/user/login",{
-    method:"post",
-    headers:{
-      'Content-Type': 'application/json'
-    },
-    body:JSON.stringify({
-      
-      
-        email,
-        password
-    })
-})
-.then(async (response) => {
-  if (response.status == 200) {
-    const cookie = response.headers.get('auth-token');
-    await AsyncStorage.setItem('token', cookie);
   
-   Alert.alert('login success');
-navigation.navigate('Create');
-  
-  } else if (response.status == 400) {
-  
-    Alert.alert('Enter valid Email/password');
-    
-  } else if (response.status == 401) {
-    
-    Alert.alert('User not found');
-  }
-
-  else if (response.status == 402) {
-    //setLoading(false);
-    Alert.alert('Invalid password');
-  }
-  
-})
-} 
-  
-  return (
+return (
     <View style={styles.container}>
       
       <View>
@@ -57,7 +18,7 @@ navigation.navigate('Create');
           mode='outlined'
           keyboardType='email-address'
           theme={themes}
-          onChangeText={email=>setEmail(email)}
+          
           />
           <MaterialCommunityIcons  style={styles.icon}size={24}  name="email"/>  
           </View>
@@ -66,11 +27,11 @@ navigation.navigate('Create');
           label="Password"
           mode='outlined'
          theme={themes}
-         onChangeText={password=>setPassword(password)}
+        
           />
           <Ionicons style={styles.icon} size={24}name="key"/>
         </View>
-        <Button  style={styles.button}mode='contained'  onPress={() => Login()}>
+        <Button  style={styles.button}mode='contained'  onPress={() => {navigation.navigate('Home')}}>
           <Text>Login</Text>
         </Button>
         <Text style={styles.subheading}>New User?</Text>
