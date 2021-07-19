@@ -5,7 +5,7 @@ import { TextInput, Button } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { roundToNearestPixel } from 'react-native/Libraries/Utilities/PixelRatio';
-const Update = ({ navigation, route }) => {
+const Update = ({ navigation }) => {
 
 
 

@@ -31,7 +31,7 @@ return (
           />
           <Ionicons style={styles.icon} size={24}name="key"/>
         </View>
-        <Button  style={styles.button}mode='contained'  onPress={() => {navigation.navigate('Home')}}>
+        <Button  style={styles.button}mode='contained'  onPress={() => {navigation.navigate('Create')}}>
           <Text>Login</Text>
         </Button>
         <Text style={styles.subheading}>New User?</Text>

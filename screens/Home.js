@@ -8,6 +8,7 @@ const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            
             <Card style={styles.mycard}
                 onPress={() => { navigation.navigate('Details') }} >
                 <Text style={styles.text}>James</Text>
